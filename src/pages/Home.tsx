@@ -30,6 +30,7 @@ const Home = () => {
             <ArticleItem></ArticleItem>
             <ArticleItem></ArticleItem>
             <ArticleItem></ArticleItem>
+            <ArticleItem></ArticleItem>
       </Content>
       <Footer></Footer>
     </>
