@@ -1,7 +1,9 @@
-import React from 'react';
-import { createGlobalStyle } from 'styled-components'
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import { Provider } from "react-redux";
+import { createGlobalStyle } from "styled-components";
+import ReactDOM from "react-dom";
+import App from "./App";
+import store from "./redux/store";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -10,13 +12,14 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
   }
 
-`
-
+`;
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

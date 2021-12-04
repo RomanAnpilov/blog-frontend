@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+interface Props {
+  title: string;
+  img: string;
+  description: string;
+}
+
 const Wrapper = styled.div`
   width: 850px;
   text-align: center;
@@ -22,15 +28,15 @@ const Description = styled.p`
   margin: 20px 0;
 `;
 
-const LastArticle: React.FC = () => {
+const LastArticle: React.FC<Props> = ({title, img, description}) => {
   return (
     <Wrapper>
-      <Image src="preview.png" />
+      <Image src={img} />
       <Title>
-        A few words about this blog platform, Ghost, and how this site was made
+        {title}
       </Title>
       <Description>
-        Why Ghost (& Figma) instead of Medium, WordPress or other options?
+        {description}
       </Description>
     </Wrapper>
   );
