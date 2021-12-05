@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -36,7 +37,7 @@ const MenuItem = styled.li`
 const Header: React.FC = () => {
   return (
     <Wrapper>
-      <Title>Airgurt Blog</Title>
+      <Link to="/" ><Title>Airgurt Blog</Title></Link>
       <Menu>
         <MenuItem>Blog</MenuItem>
         <MenuItem>About</MenuItem>

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
 import { Header, Footer } from "../components";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   text-align: center;
@@ -36,30 +38,26 @@ text-align: left;
   p { font-size: 20px;}
 `;
 
-const markdown = `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu velit tempus erat egestas efficitur. In hac habitasse platea dictumst. Fusce a nunc eget ligula suscipit finibus. Aenean pharetra quis lacus at viverra. 
-
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam quis posuere ligula. In eu dui molestie, molestie lectus eu, semper lectus. 
-
-# Next on the pipeline
-  `;
-
 const Article: React.FC = () => {
+  const params = useParams();
+
+  const article = useSelector((data: any) => data?.articles.data.find((a: any) => a._id === params.id));
+
+
   return (
     <>
       <Header />
       <Wrapper>
         <Title>
-          A few words about this blog platform, Ghost, and how this site was
-          made
+          {article.title}
         </Title>
         <Description>
-          Why Ghost (& Figma) instead of Medium, WordPress or other options?
+         {article.description}
         </Description>
-        <Image src="preview.png" />
+        <Image src={`/${article.img}`} />
 
         <Content>
-          <ReactMarkdown children={markdown} />
+          <ReactMarkdown children={article.content} />
         </Content>
       </Wrapper>
       <Footer />
@@ -68,3 +66,5 @@ const Article: React.FC = () => {
 };
 
 export default Article;
+
+
